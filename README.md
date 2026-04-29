@@ -2,27 +2,43 @@
 
 Site web officiel du **Graveson Provence Basket Club (GPBC)** — club de basketball 100% féminin à Graveson, Provence.
 
-🌐 **Site en ligne** : [gpbc-graveson.github.io](https://gpbc-graveson.github.io)
+🌐 **Site public** : `https://christophecros-debug.github.io/gpbc-graveson.github.io`
+🔐 **Administration** : `https://christophecros-debug.github.io/gpbc-graveson.github.io/admin.html`
 
 ## Structure du projet
 
 ```
 gpbc-graveson.github.io/
-├── index.html        ← page principale du site
+├── index.html     ← site public
+├── admin.html     ← interface d'administration (protégée par mot de passe)
 ├── images/
-│   ├── logo.png      ← logo du club
-│   ├── pressoirs.jpg ← sponsor Pressoirs de Provence
-│   ├── tpk.jpg       ← sponsor TPK 84
-│   └── uexpress.png  ← sponsor U Express Graveson
+│   ├── logo.png
+│   ├── pressoirs.jpg
+│   ├── tpk.jpg
+│   └── uexpress.png
 └── README.md
 ```
 
-## Modifier le contenu
+## Page d'administration
 
-- **Horaires** → modifier la section `#horaires` dans `index.html`
-- **Événements** → modifier la section `#evenements` dans `index.html`
-- **Photo équipe** → remplacer le placeholder dans `.intro-img` par une balise `<img>`
-- **Formulaire inscription** → remplacer le lien Instagram dans `#inscription` par l'URL du Google Form
+Accéder à `admin.html` — mot de passe par défaut : **GPBC2026**
+*(à changer dès la première connexion depuis l'onglet Sécurité)*
+
+Depuis l'admin vous pouvez :
+- **Événements** : ajouter, modifier, supprimer des événements (matchs, tournois, AG...)
+- **Horaires** : gérer les créneaux d'entraînement par jour et catégorie
+- **Sponsors** : gérer la liste des sponsors et leurs logos
+- **Sécurité** : changer le mot de passe d'accès
+
+> ⚠️ Les données sont stockées dans le `localStorage` du navigateur.
+> Chaque membre du bureau doit configurer son mot de passe sur son propre appareil.
+
+## Ajouter une photo d'équipe
+
+Remplacer le bloc `intro-placeholder` dans `index.html` par :
+```html
+<img src="images/photo-equipe.jpg" alt="L'équipe GPBC" style="width:100%;height:100%;object-fit:cover;">
+```
 
 ## Déployer une modification
 
@@ -31,5 +47,3 @@ git add .
 git commit -m "Description de la modification"
 git push
 ```
-
-Le site se met à jour automatiquement en moins d'une minute.
