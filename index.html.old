@@ -29,7 +29,7 @@
     .nav-toggle span{width:22px;height:2px;background:#fff;border-radius:2px;display:block}
     .hero{background:var(--black);min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px;position:relative;overflow:hidden}
     .hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(200,16,46,.12) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 20% 30%,rgba(240,192,32,.06) 0%,transparent 60%)}
-    .hero-grid{display:none}
+    .hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.04;background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:40px 40px}
     .hero-accent-line{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--red),var(--gold),var(--red),transparent)}
     .hero-logo{width:150px;height:150px;object-fit:contain;position:relative;z-index:1;filter:drop-shadow(0 0 40px rgba(200,16,46,.3));animation:logoIn .8s ease both}
     @keyframes logoIn{from{opacity:0;transform:scale(.85) translateY(20px)}to{opacity:1;transform:none}}
@@ -56,20 +56,18 @@
     .section-header{margin-bottom:32px}
     .section-header h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;color:var(--text);margin-bottom:4px}
     .section-header p{font-size:13px;color:var(--muted)}
-    .feminin-banner{background:#1a1a2e;border-radius:8px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:28px;border-left:3px solid var(--red)}
-    .feminin-banner p{color:rgba(255,255,255,.7);font-size:13px;line-height:1.5}
+    .feminin-banner{background:var(--black);border-radius:6px;padding:14px 20px;display:flex;align-items:center;gap:14px;margin-bottom:28px;border-left:3px solid var(--red)}
+    .feminin-banner p{color:rgba(255,255,255,.65);font-size:13px;line-height:1.5}
     .feminin-banner strong{color:var(--gold)}
-    .schedule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
-    .day-card{background:#fff;border-radius:10px;overflow:hidden;border:none;box-shadow:0 2px 12px rgba(0,0,0,.07)}
-    .day-body{padding:12px 16px;background:#fff;border:1px solid #fce7f3;border-top:none;border-radius:0 0 10px 10px}
-    .day-header{background:#db2777;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
-    .day-name{font-family:'Bebas Neue',sans-serif;font-size:20px;color:#fff;letter-spacing:1px}
-    .day-header-icon{width:28px;height:28px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center}
-    .day-body{padding:12px 16px;background:#fff}
-    .session{padding:8px 0;border-bottom:1px solid #f0f0f0;display:flex;justify-content:space-between;align-items:center;gap:8px}
+    .schedule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .day-card{background:var(--card);border-radius:6px;overflow:hidden;border:1px solid var(--border)}
+    .day-header{background:var(--black);padding:10px 16px}
+    .day-name{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);letter-spacing:1px}
+    .day-body{padding:10px 16px}
+    .session{padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;justify-content:space-between;align-items:center;gap:8px}
     .session:last-child{border-bottom:none}
-    .session-cat{font-size:14px;font-weight:600;color:#1a1a1a}
-    .session-time{font-size:11px;color:#fff;background:#db2777;padding:2px 8px;border-radius:20px;white-space:nowrap;font-weight:500}
+    .session-cat{font-size:14px;font-weight:600}
+    .session-time{font-size:12px;color:var(--muted);white-space:nowrap}
     #events-container{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
     .event-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:18px;display:flex;gap:16px;align-items:flex-start;transition:transform .2s,box-shadow .2s}
     .event-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
@@ -84,20 +82,6 @@
     .sponsor-card{flex:1;min-width:140px;max-width:200px;background:#fff;border:1px solid var(--border);border-radius:6px;padding:24px 20px;display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;text-decoration:none}
     .sponsor-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
     .sponsor-card img{max-width:100%;max-height:60px;object-fit:contain}
-    /* Carousel sponsors */
-    .carousel-outer{position:relative;overflow:hidden}
-    .carousel-track{display:flex;gap:20px;transition:transform .45s cubic-bezier(.4,0,.2,1)}
-    .carousel-slide{flex:0 0 calc(33.333% - 14px);background:#fff;border-radius:12px;padding:32px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;box-shadow:0 2px 12px rgba(0,0,0,.07);border:1px solid #eee;transition:transform .2s,box-shadow .2s}
-    .carousel-slide:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.12)}
-    .carousel-slide img{max-width:100%;max-height:90px;object-fit:contain}
-    .carousel-slide .sp-name{font-size:13px;font-weight:600;color:#555;text-align:center;line-height:1.4}
-    .carousel-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:24px}
-    .carousel-btn{width:42px;height:42px;border-radius:50%;background:var(--black);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s}
-    .carousel-btn:hover{background:var(--red);transform:scale(1.08)}
-    .carousel-dots{display:flex;gap:8px;align-items:center}
-    .carousel-dot{width:8px;height:8px;border-radius:50%;background:#ddd;border:none;cursor:pointer;transition:background .2s,transform .2s;padding:0}
-    .carousel-dot.active{background:var(--red);transform:scale(1.35)}
-    @media(max-width:768px){.carousel-slide{flex:0 0 calc(100% - 0px)}}
     .inscription-block{background:var(--black);border-radius:8px;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;overflow:hidden}
     .inscription-block::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold),var(--red))}
     .inscription-block h2{font-family:'Bebas Neue',sans-serif;color:#fff;font-size:32px;letter-spacing:1px;margin-bottom:6px}
@@ -210,18 +194,7 @@
     <h2>Nos sponsors</h2>
     <p>Merci à nos partenaires pour leur soutien !</p>
   </div>
-  <div class="carousel-outer" id="carousel-outer">
-    <div class="carousel-track" id="carousel-track"></div>
-  </div>
-  <div class="carousel-nav">
-    <button class="carousel-btn" id="prev-btn" aria-label="Précédent">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <div class="carousel-dots" id="carousel-dots"></div>
-    <button class="carousel-btn" id="next-btn" aria-label="Suivant">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-  </div>
+  <div class="sponsors-grid" id="sponsors-grid-dynamic"></div>
 </section>
 
 <section class="section section-alt" id="inscription">
@@ -302,64 +275,17 @@
     sched.forEach(s=>{if(!byDay[s.day])byDay[s.day]=[];byDay[s.day].push(s)});
     document.getElementById('schedule-grid-dynamic').innerHTML=Object.entries(byDay).map(([day,slots])=>`
       <div class="day-card">
-        <div class="day-header"><span class="day-name">${day}</span><div class="day-header-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M12 12v8"/></svg></div></div>
+        <div class="day-header"><span class="day-name">${day}</span></div>
         <div class="day-body">${slots.map(s=>`<div class="session"><span class="session-cat">${s.cat}</span><span class="session-time">${s.time}</span></div>`).join('')}</div>
       </div>`).join('');
   }
 
   function renderSponsors(){
     const sponsors=safeGet('gpbc_sponsors',DEFAULT_SPONSORS);
-    const track=document.getElementById('carousel-track');
-    track.innerHTML=sponsors.map(sp=>{
-      const inner=`<img src="images/${sp.file}" alt="${sp.name}"><span class="sp-name">${sp.name}</span>`;
-      return sp.url
-        ?`<a href="${sp.url}" target="_blank" rel="noopener" class="carousel-slide">${inner}</a>`
-        :`<div class="carousel-slide">${inner}</div>`;
+    document.getElementById('sponsors-grid-dynamic').innerHTML=sponsors.map(sp=>{
+      const img=`<img src="images/${sp.file}" alt="${sp.name}" style="max-width:100%;max-height:60px;object-fit:contain;">`;
+      return sp.url?`<a href="${sp.url}" target="_blank" rel="noopener" class="sponsor-card">${img}</a>`:`<div class="sponsor-card">${img}</div>`;
     }).join('');
-    initCarousel();
-  }
-
-  let carCurrent=0;
-  let carAutoTimer;
-
-  function initCarousel(){
-    const slides=document.querySelectorAll('.carousel-slide');
-    const total=slides.length;
-    const dotsEl=document.getElementById('carousel-dots');
-    dotsEl.innerHTML='';
-    for(let i=0;i<total;i++){
-      const d=document.createElement('button');
-      d.className='carousel-dot'+(i===0?' active':'');
-      d.onclick=(()=>{const idx=i;return()=>{carGoTo(idx);carResetAuto();}})();
-      dotsEl.appendChild(d);
-    }
-    document.getElementById('prev-btn').onclick=()=>{carGoTo(carCurrent-1);carResetAuto();}
-    document.getElementById('next-btn').onclick=()=>{carGoTo(carCurrent+1);carResetAuto();}
-    carGoTo(0);
-    carResetAuto();
-    window.addEventListener('resize',()=>carGoTo(carCurrent));
-  }
-
-  function visibleSlides(){return window.innerWidth<768?1:window.innerWidth<1024?2:3;}
-
-  function carGoTo(idx){
-    const slides=document.querySelectorAll('.carousel-slide');
-    const total=slides.length;
-    const vc=visibleSlides();
-    const pages=Math.ceil(total/vc);
-    carCurrent=((idx%pages)+pages)%pages;
-    const slideW=slides[0].offsetWidth+20;
-    document.getElementById('carousel-track').style.transform=`translateX(${-carCurrent*vc*slideW}px)`;
-    document.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===carCurrent));
-  }
-
-  function carResetAuto(){
-    clearInterval(carAutoTimer);
-    carAutoTimer=setInterval(()=>{
-      const vc=visibleSlides();
-      const total=document.querySelectorAll('.carousel-slide').length;
-      carGoTo((carCurrent+1)%Math.ceil(total/vc));
-    },4000);
   }
 
   renderEvents();
