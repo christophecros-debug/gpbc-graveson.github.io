@@ -27,18 +27,21 @@
     .nav-links li a:hover{color:var(--gold);border-color:var(--gold)}
     .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
     .nav-toggle span{width:22px;height:2px;background:#fff;border-radius:2px;display:block}
-    .hero{background:var(--black);min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px;position:relative;overflow:hidden}
+    .hero{background:var(--black);padding:40px 40px 36px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center}
     .hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(200,16,46,.12) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 20% 30%,rgba(240,192,32,.06) 0%,transparent 60%)}
     .hero-grid{display:none}
     .hero-accent-line{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--red),var(--gold),var(--red),transparent)}
-    .hero-logo{width:150px;height:150px;object-fit:contain;position:relative;z-index:1;filter:drop-shadow(0 0 40px rgba(200,16,46,.3));animation:logoIn .8s ease both}
-    @keyframes logoIn{from{opacity:0;transform:scale(.85) translateY(20px)}to{opacity:1;transform:none}}
-    .hero-eyebrow{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;background:rgba(200,16,46,.12);border:1px solid rgba(200,16,46,.3);color:#e06070;font-size:12px;font-weight:500;padding:6px 16px;border-radius:4px;margin:20px 0 16px;letter-spacing:1px;text-transform:uppercase;animation:fadeUp .7s .2s ease both}
-    .hero h1{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;color:#fff;font-size:clamp(42px,7vw,82px);line-height:1;letter-spacing:2px;margin-bottom:16px;animation:fadeUp .7s .35s ease both}
+    /* Ligne titre avec logos latéraux */
+    .hero-title-row{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:24px;margin-bottom:10px;animation:logoIn .8s ease both}
+    .hero-logo{width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(200,16,46,.4));flex-shrink:0}
+    .hero-logo.dim{opacity:.35;filter:none}
+    @keyframes logoIn{from{opacity:0;transform:scale(.9) translateY(12px)}to{opacity:1;transform:none}}
+    .hero h1{font-family:'Bebas Neue',sans-serif;color:#fff;font-size:clamp(38px,6vw,72px);line-height:1;letter-spacing:2px;margin:0}
     .hero h1 .gold{color:var(--gold)}
-    .hero-sub{position:relative;z-index:1;color:rgba(255,255,255,.5);font-size:16px;font-weight:300;margin-bottom:40px;letter-spacing:.5px;animation:fadeUp .7s .5s ease both}
-    .hero-buttons{position:relative;z-index:1;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .7s .65s ease both}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    .hero-eyebrow{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;background:rgba(200,16,46,.12);border:1px solid rgba(200,16,46,.3);color:#e06070;font-size:11px;font-weight:500;padding:5px 14px;border-radius:4px;margin-bottom:16px;letter-spacing:1px;text-transform:uppercase;animation:fadeUp .7s .1s ease both}
+    .hero-sub{position:relative;z-index:1;color:rgba(255,255,255,.45);font-size:14px;font-weight:300;margin-bottom:28px;letter-spacing:.5px;animation:fadeUp .7s .3s ease both}
+    .hero-buttons{position:relative;z-index:1;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .7s .45s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
     .btn-red{background:var(--red);color:#fff;border:none;padding:14px 32px;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-family:'Outfit',sans-serif;letter-spacing:.5px;transition:background .2s,transform .15s}
     .btn-red:hover{background:var(--red-dark);transform:translateY(-2px)}
     .btn-ghost{background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.2);padding:13px 22px;border-radius:4px;font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:9px;font-family:'Outfit',sans-serif;transition:border-color .2s,color .2s,transform .15s}
@@ -115,7 +118,10 @@
       .nav-links.open{display:flex}
       .nav-links li a{height:50px;padding:0 20px;border-bottom:1px solid rgba(255,255,255,.06)}
       .nav-toggle{display:flex}
-      .hero{min-height:auto;padding:48px 20px}
+      .hero{padding:28px 20px 24px}
+      .hero-title-row{gap:14px}
+      .hero-logo{width:56px;height:56px}
+      .hero h1{font-size:clamp(32px,8vw,52px)}
       .intro{flex-direction:column}
       .intro-media{min-height:200px}
       .intro-content{padding:36px 24px}
@@ -147,12 +153,15 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-  <img class="hero-logo" src="images/logo.png" alt="Logo GPBC">
   <div class="hero-eyebrow">
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M12 12v8M9 17h6"/></svg>
     Club 100% féminin — Graveson, Provence
   </div>
-  <h1>GRAVESON<br><span class="gold">PROVENCE</span><br>BASKET CLUB</h1>
+  <div class="hero-title-row">
+    <img class="hero-logo dim" src="images/logo.png" alt="">
+    <h1>GRAVESON<br><span class="gold">PROVENCE</span><br>BASKET CLUB</h1>
+    <img class="hero-logo" src="images/logo.png" alt="Logo GPBC">
+  </div>
   <p class="hero-sub">De l'U5 aux Seniors — le basketball féminin à Graveson</p>
   <div class="hero-buttons">
     <a href="#inscription" class="btn-red">Nous rejoindre</a>
