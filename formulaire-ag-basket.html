@@ -281,12 +281,7 @@
     <h2><span class="dot"></span>Votre inscription</h2>
 
     <div class="field">
-      <label>Prénom de l'enfant *</label>
-      <input type="text" id="f-enfant" placeholder="Ex : Léa" autocomplete="off">
-    </div>
-
-    <div class="field">
-      <label>Votre prénom &amp; nom (parent / responsable) *</label>
+      <label>Prénom &amp; nom *</label>
       <input type="text" id="f-parent" placeholder="Ex : Sophie Dupont" autocomplete="off">
     </div>
 
@@ -304,21 +299,6 @@
         <button class="cat-btn" data-cat="dessert">🍰 Dessert</button>
       </div>
       <input type="hidden" id="f-cat">
-    </div>
-
-    <div class="field">
-      <label>Ce que vous apportez *</label>
-      <input type="text" id="f-plat" placeholder="Ex : Taboulé maison, Quiche lorraine…">
-    </div>
-
-    <div class="field">
-      <label>Nombre de portions</label>
-      <input type="number" id="f-portions" min="1" max="99" placeholder="Ex : 8">
-    </div>
-
-    <div class="field">
-      <label>Commentaire (allergènes, végétarien…)</label>
-      <textarea id="f-comment" placeholder="Ex : Sans gluten, contient des noix…"></textarea>
     </div>
 
     <button class="btn-submit" onclick="handleSubmit()">
@@ -367,20 +347,14 @@
   });
 
   function handleSubmit() {
-    const enfant  = document.getElementById('f-enfant').value.trim();
     const parent  = document.getElementById('f-parent').value.trim();
     const contact = document.getElementById('f-contact').value.trim();
-    const plat    = document.getElementById('f-plat').value.trim();
-    const portions= document.getElementById('f-portions').value;
-    const comment = document.getElementById('f-comment').value.trim();
 
-    if (!enfant)  return flash('f-enfant',  'Merci d\'indiquer le prénom de l\'enfant.');
     if (!parent)  return flash('f-parent',  'Merci d\'indiquer votre prénom et nom.');
     if (!contact) return flash('f-contact', 'Merci d\'indiquer un téléphone ou un email.');
     if (!selectedCat) return showToast('Merci de choisir une catégorie.', true);
-    if (!plat)    return flash('f-plat',    'Merci de préciser ce que vous apportez.');
 
-    const entry = { enfant, parent, contact, cat: selectedCat, plat, portions: portions || '', comment, ts: Date.now() };
+    const entry = { parent, contact, cat: selectedCat, ts: Date.now() };
     participants.push(entry);
     try { localStorage.setItem(KEY, JSON.stringify(participants)); } catch {}
 
@@ -399,7 +373,7 @@
   }
 
   function resetForm() {
-    ['f-enfant','f-parent','f-contact','f-plat','f-portions','f-comment'].forEach(id => document.getElementById(id).value = '');
+    ['f-parent','f-contact'].forEach(id => document.getElementById(id).value = '');
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     selectedCat = '';
   }
@@ -426,10 +400,7 @@
     ul.innerHTML = [...participants].reverse().map(p => `
       <li>
         <span class="tag ${p.cat}">${CAT[p.cat]}</span>
-        <div>
-          <div class="info-name">${esc(p.enfant)} <span style="font-weight:400;color:var(--muted);font-size:11px;">(${esc(p.parent)})</span></div>
-          <div class="info-sub">${esc(p.plat)}${p.portions ? ' · ' + p.portions + ' portions' : ''}${p.comment ? ' · ' + esc(p.comment) : ''}</div>
-        </div>
+        <div class="info-name">${esc(p.parent)}</div>
       </li>`).join('');
   }
 
